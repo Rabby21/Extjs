@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" 
+         rel = "stylesheet" />
+      <script type = "text/javascript" 
+         src = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+      
+      <script type = "text/javascript">
+         Ext.onReady(function() {
+            // var button1 = Ext.create('Ext.Button', {
+            //    renderTo: Ext.getElementById('ext'),
+            //    text    : 'hide',
+            //    scale   : 'large',
+            //    height  :80,
+            //    width   :100,
+            //    listeners: {
+            //       //click: function(button) {
+            //          //Ext.MessageBox.alert('Alert box', 'My custom event is called');
+            //          //Ext.toast('toast toast toast');
+            //          //Ext.get('paragraph').hide();
+            //          myEvent: function(button1) {
+            //          Ext.MessageBox.alert('Alert box', 'My custom event is called');
+            //       }
+            //    }
+
+            // });
+            // Ext.defer(function() {
+            //    button1.fireEvent('myEvent');
+            // }, 5000);
+         //    Ext.create('Ext.Button', {
+         //       renderTo: Ext.getElementById('ext'),
+         //       text    : 'show',
+         //       scale   : 'large',
+         //       height  :80,
+         //       width   :100,
+         //       listeners: {
+         //          click: function(button) {
+         //             //Ext.MessageBox.alert('Alert box', 'My custom event is called');
+         //             //Ext.toast('toast toast toast');
+         //             Ext.get('paragraph').show();
+         //          }
+         //       },
+
+         //    });
+
+          Ext.create('Ext.form.Panel',{
+            width:960,
+            title:'Registration',
+            renderTo:Ext.getBody(),
+            margin:'40 0 0 20',
+            items: [{
+                  xtype: 'textfield',
+                  fieldLabel: 'Frist Name',
+                  id:'name'
+               },{
+                  xtype: 'button',
+                  text: 'Button',
+                  listeners:{
+                     click: function(button){
+                        //Ext.MessageBox.alert("this is button");
+                        var n=Ext.getCmp('name').getValue();
+                        Ext.MessageBox.alert(n);
+                     }
+                  }
+
+               }]
+
+          });
+         });
+      </script>
+   </head>
+   
+   <body>
+     <!-- <p>this is paragraph</p>
+      <div id = "ext" /> -->
+   </body>
+</html>

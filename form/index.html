@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" 
+         rel = "stylesheet" />
+      <script type = "text/javascript" 
+         src = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+      
+      <script type = "text/javascript">
+         Ext.onReady(function() {
+            Ext.create('Ext.form.Panel', {
+               id: 'newForm',
+               renderTo: 'formId',
+               border: true,
+               width: 600,
+               margin:'40 0 0 40',
+               items:[{
+                  xtype: 'fieldset',
+                  title: 'Registration Form',
+               items: [{
+                  xtype: 'textfield',
+                  fieldLabel: 'Name',
+                  name:'name',
+                  id:'name',
+                  vtype:'alpha',
+                  allowBlank:false
+               },{
+                  xtype: 'textfield',
+                  fieldLabel: 'Password',
+                  name:'password',
+                  id:'password',
+                  inputType:'password'
+               },{
+                  xtype: 'textfield',
+                  fieldLabel: 'Phone',
+                  name:'phone',
+                  id:'phone',
+                  inputType:'number',
+                  vtype:'phone'
+               //    validator:function(val)
+               // {
+               //    var x=val.replace(/[^0-9]/g,'');
+               //    if(x.length==11||x.length==15)
+               //    {
+               //       alert("valid phone number");
+               //    }
+               //    else
+               //    {
+               //       alert("invalid phone number");
+               //    }
+
+               // }
+               },{
+                  xtype: 'textfield',
+                  fieldLabel: 'Email',
+                  name:'email',
+                  id:'email',
+                  vtype:'email'
+               },
+               // {
+               //    xtype: 'button',
+               //    text: 'Button'
+               // },
+               {
+                  xtype: 'fieldcontainer',
+                  fieldLabel: 'Gender',
+                  defaultType: 'radiofield',
+                  defaults: {
+                     //flex: 1
+                  },
+                  layout: 'hbox',
+                  items: [{
+                     boxLabel: 'Male',
+                     inputValue: 'male',
+                     name:'gender',
+                     id: 'radio1',
+               //       listeners:{
+               //    change:function(field,newValue,oldValue){
+               //       if (newValue) {
+               //          var male=field.boxLabel;
+               //       }
+               //    }
+               // }
+                  },{
+                     boxLabel: 'Female',
+                     inputValue: 'female',
+                     name:'gender',
+                     id: 'radio2'
+                  }]
+
+               },{
+                  xtype: 'fieldcontainer',
+                  fieldLabel: 'Education',
+                  defaultType: 'checkboxfield',
+                  
+                  items: [{
+                     boxLabel: 'SSC',
+                     inputValue: 'ssc',
+                     id: 'checkbox1'
+                  },{
+                     boxLabel: 'HSC',
+                     inputValue: 'hsc',
+                     id: 'checkbox2'
+                  },{
+                     boxLabel: 'B.Sc',
+                     inputValue: 'bsc',
+                     checked: true,
+                     id: 'checkbox3'
+                  },
+                  {
+                     xtype:'button',
+                     text: 'Save',
+                     listeners:{
+                     click: function(button){
+                        //Ext.MessageBox.alert("this is button");
+                        var name=Ext.getCmp('name').getValue();
+                        var password=Ext.getCmp('password').getValue();
+                        var phone=Ext.getCmp('phone').getValue();
+                        var email=Ext.getCmp('email').getValue();
+                        var male=Ext.getCmp('radio1').getValue();
+                        if(male==true)
+                        {
+                           var gender=male;
+                        }
+                        
+                        // var password=Ext.getCmp('password').getValue();
+                        // var password=Ext.getCmp('password').getValue();
+                     
+
+                        Ext.MessageBox.alert("Name:"+name+"<br>Password:"+password+"<br>Phone:"+phone+"<br>Email:"+email+"<br>Gender:"+gender);
+
+                     }
+                  }
+                  }]
+               }]
+            }]
+            });
+         });
+      </script>
+   </head>
+   
+   <body>
+      <div id = "formId"></div>
+   </body>
+</html>

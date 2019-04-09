@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ProgressBar</title>
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" 
+    rel = "stylesheet" />
+    <script type = "text/javascript" 
+    src = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+    <script type = "text/javascript">
+        Ext.application({
+            requires : ['Ext.window.MessageBox'],
+            name : 'ProgressBar Tutorial',
+
+            launch : function(){
+
+                var progBar = Ext.create('Ext.ProgressBar');
+
+                Ext.create('Ext.container.Viewport', 
+                {
+                    id : 'myid',
+                    layout : 'fit',
+                    items : [{
+                        title : 'Viewport for ProgressBar',
+                        margin : '40 40 10 40',
+                        defaults : 
+                        {
+                            xtype : 'button',
+                            margin : '40 10 10 40'
+                        },
+
+                        items : [{
+                            text : 'Show MessageBox as ProgressBar',
+                            handler : function(){
+
+                            //MessageBox as ProgressBar
+                            Ext.MessageBox.show({
+                                msg : 'Saving changes, please wait...',
+                                progressText : 'Saving...',
+                                width : 300,
+                                wait : true,
+                                waitConfig : 
+                                {
+                                    duration : 10000,
+                                    increment : 15,
+                                    text : 'Saving...',
+                                    scope : this,
+                                    fn : function(){
+                                        Ext.MessageBox.hide();
+                                        Ext.Msg.alert('Status', 'Saved successfully!');
+                                    }
+                                }
+                            });
+                        }
+                    }, 
+                    {
+                        text : 'Show Manual ProgressBar',
+                        handler : function(){
+
+                        //Manual ProgressBar
+                        
+                        for(var i = 0; i < 11; i ++ ){
+                            progBar.updateProgress((i * 0.1), 'updating', 'saving..');
+                            //write code which takes times to execute in each iteration
+                        }
+                        progBar.updateText('Saved Successfully!');
+                    }
+                }, 
+                {
+                    text : 'Show AutomaticProgressBar',
+                    handler : function(){
+
+                        //Automatic ProgressBar
+                        progBar.wait({
+                            duration : 10000,
+                            increment : 12,
+                            text : 'Saving...',
+                            scope : this,
+                            fn : function(){
+                                progBar.updateText('Saved Successfully!');
+                            }
+                        });
+                        
+                    }
+                }, 
+                {
+                    xtype : 'panel',
+                    width : 300,
+                    items : [progBar]
+                }]
+            }]
+        });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id='btn1'></div>
+    <div id='btn2'></div>
+    <div id="div1">
+
+    </div>
+</body>
+</html>
